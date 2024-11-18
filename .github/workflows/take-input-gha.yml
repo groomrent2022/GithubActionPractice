@@ -27,3 +27,7 @@ jobs:
       - name: Call next workflow with inputs
         run: |
           echo "Calling next workflow and send data"
+          curl -X POST \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -d '{"ref": "main", "inputs": {"username": "${{ github.event.inputs.username }}", "environment": "${{ github.event.inputs.environment }}"}}' \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/next-workflow.yml/dispatches
