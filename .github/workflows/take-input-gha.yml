@@ -12,6 +12,12 @@ on:
         required: true
         default: 'staging'
 
+permissions:
+  contents: read      # Read access to repository contents
+  issues: write       # Write access to issues
+  pull-requests: write
+  workflow: write     # This allows you to trigger other workflows
+  
 jobs:
   job1:
     runs-on: ubuntu-latest
