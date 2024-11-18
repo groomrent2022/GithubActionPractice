@@ -1,0 +1,22 @@
+name: Receive Data And Work
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'GitHub username'
+        required: true
+      environment:
+        description: 'Deployment environment'
+        required: true
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Process inputs
+        run: |
+          echo "Processing for Username: ${{ github.event.inputs.username }} in Environment: ${{ github.event.inputs.environment }}"
