@@ -1,0 +1,29 @@
+name: Take Input GHA
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'GitHub username'
+        required: true
+        default: 'exampleuser'
+      environment:
+        description: 'Deployment environment (e.g., production, staging)'
+        required: true
+        default: 'staging'
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Display input values
+        run: |
+          echo "Username: ${{ github.event.inputs.username }}"
+          echo "Environment: ${{ github.event.inputs.environment }}"
+        
+      - name: Call next workflow with inputs
+        run: |
+          echo "Calling next workflow and send data"
