@@ -1,28 +1,18 @@
-name: Receive Data And Work
+name: Second Workflow
 
 on:
-  workflow_dispatch:
-    inputs:
-      username:
-        description: 'GitHub username'
-        required: true
-      environment:
-        description: 'Deployment environment'
-        required: true
-
-permissions:
-  contents: read      # Read access to repository contents
-  issues: write       # Write access to issues
-  pull-requests: write
-  workflow: write     # This allows you to trigger other workflows
+  workflow_run:
+    workflows: ["Trigger Workflow"]
+    types:
+      - completed
 
 jobs:
-  job1:
+  process_input:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-      - name: Process inputs
+      - name: Print user name and message
         run: |
-          echo "Processing for Username: ${{ github.event.inputs.username }} in Environment: ${{ github.event.inputs.environment }}"
+          echo "Received user name: ${{ github.event.inputs.user_name }}"
