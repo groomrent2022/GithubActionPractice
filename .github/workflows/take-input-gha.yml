@@ -1,39 +1,23 @@
-name: Take Input GHA
+name: Trigger Workflow
 
 on:
   workflow_dispatch:
     inputs:
-      username:
-        description: 'GitHub username'
+      user_name:
+        description: 'Your Name'
         required: true
-        default: 'exampleuser'
-      environment:
-        description: 'Deployment environment (e.g., production, staging)'
-        required: true
-        default: 'staging'
+        type: string
+        default: Parth
 
-permissions:
-  contents: read      # Read access to repository contents
-  issues: write       # Write access to issues
-  pull-requests: write
-  workflow: write     # This allows you to trigger other workflows
-  
 jobs:
-  job1:
+  trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      
-      - name: Display input values
-        run: |
-          echo "Username: ${{ github.event.inputs.username }}"
-          echo "Environment: ${{ github.event.inputs.environment }}"
-        
-      - name: Call next workflow with inputs
-        run: |
-          echo "Calling next workflow and send data"
-          curl -X POST \
-            -H "Authorization: Bearer " \
-            -d '{"ref": "main", "inputs": {"username": "${{ github.event.inputs.username }}", "environment": "${{ github.event.inputs.environment }}"}}' \
-            https://api.github.com/repos/${{ github.repository }}/actions/workflows/next-workflow.yml/dispatches
+      - name: Trigger second workflow with inputs
+        uses: peter-evans/workflow-dispatch@v1
+        with:
+          repository: user/repo-name
+          workflow: next-workflow.yml
+          ref: main
+          inputs: |
+            user_name: ${{ github.event.inputs.user_name }}
