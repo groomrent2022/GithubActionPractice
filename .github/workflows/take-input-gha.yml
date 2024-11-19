@@ -1,22 +1,23 @@
-name: Trigger Workflow
+name: First Workflow
 
 on:
   workflow_dispatch:
     inputs:
-      user_name:
-        description: 'Your Name'
+      message:
+        description: 'Message for second workflow'
         required: true
         type: string
-        default: Parth
 
 jobs:
-  trigger:
+  generate_data:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger second workflow with inputs
-        uses: workflow-dispatch@v1
+      - name: Generate data and save to file
+        run: |
+          echo "Message from the first workflow: ${{ github.event.inputs.message }}" > message.txt
+
+      - name: Upload message as artifact
+        uses: actions/upload-artifact@v3
         with:
-          workflow: next-workflow.yml
-          ref: main
-          inputs: |
-            user_name: ${{ github.event.inputs.user_name }}
+          name: message-artifact
+          path: message.txt
