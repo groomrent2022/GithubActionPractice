@@ -17,13 +17,5 @@ jobs:
 
       - name: Read and print the message
         run: |
-          # Read the content of the downloaded file and use it
-          echo "Reading the artifact file"
-          cat message.txt  # This will print the contents of the message.txt file
-          
-          # You can use the content in any other way, for example:
-          MESSAGE=$(cat message.txt)
-          echo "Using the message: $MESSAGE"
-          
-          # Example: You can pass the message to another step or action
-          echo "The message is: $MESSAGE"
+          cat message.txt 
+          echo "End of work"
