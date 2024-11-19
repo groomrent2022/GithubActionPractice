@@ -4,17 +4,17 @@ on:
   workflow_dispatch:
     inputs:
       message:
-        description: 'Message for second workflow'
+        description: 'Message to be sent to the second workflow'
         required: true
         type: string
 
 jobs:
-  generate_data:
+  upload_artifact:
     runs-on: ubuntu-latest
     steps:
       - name: Generate data and save to file
         run: |
-          echo "Sending data - ${{ github.event.inputs.message }}" > message.txt
+          echo "Message from the first workflow: ${{ github.event.inputs.message }}" > message.txt
 
       - name: Upload message as artifact
         uses: actions/upload-artifact@v3
