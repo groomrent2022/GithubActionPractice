@@ -34,6 +34,6 @@ jobs:
         run: |
           echo "Calling next workflow and send data"
           curl -X POST \
-            -H "Authorization: Bearer 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" \
+            -H "Authorization: Bearer " \
             -d '{"ref": "main", "inputs": {"username": "${{ github.event.inputs.username }}", "environment": "${{ github.event.inputs.environment }}"}}' \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/next-workflow.yml/dispatches
