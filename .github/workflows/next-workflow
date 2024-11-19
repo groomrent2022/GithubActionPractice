@@ -18,4 +18,4 @@ jobs:
       - name: Read and print the message
         run: |
           echo "Reading the artifact file"
-          cat message.txt 
+          cat message.txt
