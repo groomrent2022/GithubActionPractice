@@ -19,6 +19,3 @@ jobs:
         run: |
           echo "Reading the artifact file"
           cat message.txt 
-          MESSAGE=$(cat message.txt)
-          echo "Using the message: $MESSAGE"
-          echo "The message is: $MESSAGE"
