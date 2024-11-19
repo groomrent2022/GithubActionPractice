@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger second workflow with inputs
-        uses: peter-evans/workflow-dispatch@v1
+        uses: .github/workflows/workflow-dispatch@v1
         with:
           repository: user/repo-name
           workflow: next-workflow.yml
