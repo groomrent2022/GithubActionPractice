@@ -16,7 +16,7 @@ jobs:
       - name: Download the artifact from the first workflow
         uses: actions/download-artifact@v3
         with:
-          name: message-artifact  # Name of the artifact must match
+          name: my-message-artifact  # Name of the artifact must match
 
       - name: Read and use the downloaded data
         run: |
