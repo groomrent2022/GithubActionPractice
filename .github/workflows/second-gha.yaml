@@ -1,0 +1,28 @@
+name: Second Workflow
+
+on:
+  workflow_run:
+    workflows: ["First Workflow"]  # This must match the name of the first workflow
+    types:
+      - completed
+
+jobs:
+  use_artifact_data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download the artifact from the first workflow
+        uses: actions/download-artifact@v3
+        with:
+          name: message-artifact  # Name of the artifact must match
+
+      - name: Read and use the downloaded data
+        run: |
+          echo "Reading the artifact file"
+          cat message.txt
+          
+          # Example of further processing the message
+          MESSAGE=$(cat message.txt)
+          echo "The message is: $MESSAGE"
