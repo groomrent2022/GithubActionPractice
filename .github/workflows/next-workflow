@@ -2,17 +2,19 @@ name: Second Workflow
 
 on:
   workflow_run:
-    workflows: ["Trigger Workflow"]
+    workflows: ["First Workflow"]  # Name of the first workflow
     types:
       - completed
 
 jobs:
-  process_input:
+  use_data:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Download the artifact from the first workflow
+        uses: actions/download-artifact@v3
+        with:
+          name: message-artifact
 
-      - name: Print user name and message
+      - name: Read and print the message
         run: |
-          echo "Received user name: ${{ github.event.inputs.user_name }}"
+          cat message.txt
