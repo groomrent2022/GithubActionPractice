@@ -10,4 +10,4 @@ jobs:
     steps:
       - name: Branch Name
         run: |
-          echo "Message from the first workflow: ${{ github.ref }}"
+          echo "Branch Name: ${{ github.ref }}"
