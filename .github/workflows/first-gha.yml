@@ -6,6 +6,7 @@ on:
 jobs:
   upload_artifact:
     runs-on: ubuntu-latest
+    if: contains(github.ref, 'main')
     steps:
       - name: Branch Name
         run: |
