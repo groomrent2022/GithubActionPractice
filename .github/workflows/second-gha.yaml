@@ -10,9 +10,9 @@ jobs:
       - name: Run if condition is true
         run: |
           echo "Condition is true!"
-        if: contains(github.ref, 'main')  # If condition is true
+        if: ${{ contains(github.ref, 'main') }}  # If condition is true
 
       - name: Run else condition
         run: |
           echo "Condition is false!"
-        if: !contains(github.ref, 'main')  # Else condition
+        if: ${{ !contains(github.ref, 'main') }}  # Else condition
