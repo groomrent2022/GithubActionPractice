@@ -6,7 +6,7 @@ on:
 jobs:
   if-condition:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' }}  # If condition
+    if: ${{ github.ref == 'refs/heads/mainnnn' }}  # If condition
     steps:
       - name: Run task for main branch
         run: echo "Running task for the main branch"
