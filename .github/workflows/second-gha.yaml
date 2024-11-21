@@ -1,28 +1,19 @@
-name: Second Workflow
+name: First Workflow
 
 on:
-  workflow_run:
-    workflows: ["First Workflow11"]  # This must match the name of the first workflow
-    types:
-      - completed
+  workflow_dispatch:
 
 jobs:
-  use_artifact_data:
+  example-job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Download the artifact from the first workflow
-        uses: actions/download-artifact@v3
-        with:
-          name: my-message-artifact  # Name of the artifact must match
+      - name: Run if condition is true
+        run: echo "Condition is true!"
+        if: ${{ github.ref == 'refs/heads/main' }}  # If condition is true
 
-      - name: Read and use the downloaded data
-        run: |
-          echo "Reading the artifact file"
-          cat message.txt
-          
-          # Example of further processing the message
-          MESSAGE=$(cat message.txt)
-          echo "The message is: $MESSAGE"
+      - name: Run else condition
+        run: echo "Condition is false!"
+        if: ${{ github.ref != 'refs/heads/main' }}  # Else condition
