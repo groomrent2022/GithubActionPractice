@@ -6,8 +6,12 @@ on:
 jobs:
   upload_artifact:
     runs-on: ubuntu-latest
-    if: github.ref == 'ref/heads/main'
     steps:
       - name: Branch Name
         run: |
-          echo "Branch Name: ${{ github.ref }}"
+          if [[ github.ref == 'ref/heads/main' ]]; then
+            echo "If Part Executed Branch Name: ${{ github.ref }}"
+          else 
+            echo "Else Part Executed"
+
+      
