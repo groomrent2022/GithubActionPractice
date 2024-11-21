@@ -4,14 +4,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  upload_artifact:
+  if-condition:
     runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}  # If condition
     steps:
-      - name: Branch Name
-        run: |
-          if [[ github.ref == 'ref/heads/main' ]]; then
-            echo "If Part Executed Branch Name: ${{ github.ref }}"
-          else 
-            echo "Else Part Executed"
+      - name: Run task for main branch
+        run: echo "Running task for the main branch"
 
+  else-condition:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref != 'refs/heads/main' }}  # Else condition
+    steps:
+      - name: Run task for non-main branch
+        run: echo "Running task for non-main branch"
       
