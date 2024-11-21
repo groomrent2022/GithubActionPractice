@@ -8,9 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run if condition is true
-        run: echo "Condition is true!"
+        run: |
+          echo "Condition is true!"
         if: ${{ github.ref == 'refs/heads/main' }}  # If condition is true
 
       - name: Run else condition
-        run: echo "Condition is false!"
+        run: |
+          echo "Condition is false!"
         if: ${{ github.ref != 'refs/heads/main' }}  # Else condition
