@@ -16,4 +16,4 @@ jobs:
 
       - name: Run else condition
         run: echo "Condition is false!"
-        if: ${{ github.ref != 'refs/heads/main' }}  # Else condition
+        if: ${{ github.ref == 'refs/heads/main' }}  # Else condition
