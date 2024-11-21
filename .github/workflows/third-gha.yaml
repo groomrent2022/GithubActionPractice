@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Testing branch name
         run: |
-          if [[ $github.ref =~ 'main' ]]; then
+          if [[ ${{ github.ref }} =~ 'main' ]]; then
             echo "Running on main branch!"
           else
             echo "Running on other branch!"
