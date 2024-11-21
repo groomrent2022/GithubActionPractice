@@ -9,12 +9,14 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' }}  # If condition
     steps:
       - name: Run task for main branch
-        run: echo "Running task for the main branch"
+        run: |
+          echo "Running task for the main branch"
 
   else-condition:
     runs-on: ubuntu-latest
     if: ${{ github.ref != 'refs/heads/main' }}  # Else condition
     steps:
       - name: Run task for non-main branch
-        run: echo "Running task for non-main branch"
+        run: |
+          echo "Running task for non-main branch"
       
