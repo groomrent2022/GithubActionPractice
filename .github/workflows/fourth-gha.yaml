@@ -13,7 +13,7 @@ env:
   
 jobs:
   if-condition:
-    if: contains(github.ref, env.PILOT_BRANCH_NAME)
+    if: contains(github.ref, '${{ env.PILOT_BRANCH_NAME }}')
     runs-on: ubuntu-latest
     steps:
       - name: Run task for main branch
