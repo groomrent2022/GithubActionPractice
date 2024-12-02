@@ -1,0 +1,28 @@
+name: Fourth Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: 'Release VersionNo'
+        required: true
+
+env:
+  PILOT_BRANCH_NAME: "release/${{ inputs.release_version }}-common-pilot"
+  
+jobs:
+  if-condition:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref == "refs/heads/${{ env.PILOT_BRANCH_NAME }}" }}  # If condition
+    steps:
+      - name: Run task for main branch
+        run: |
+          echo "Running task for the main branch"
+
+  else-condition:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run task for non-main branch
+        run: |
+          echo "Running task for ${{ github.ref }} branch"
+      
