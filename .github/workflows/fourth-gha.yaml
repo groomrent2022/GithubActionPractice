@@ -14,11 +14,12 @@ env:
 jobs:
   if-condition:
     runs-on: ubuntu-latest
-    if: contains(github.ref, '${{ env.PILOT_BRANCH_NAME }}')  # If condition
+    if: contains('${{ github.ref }}', '${{ env.PILOT_BRANCH_NAME }}')  # If condition
     steps:
       - name: Run task for main branch
         run: |
           echo "Running task for the main branch"
+          echo "Input branch ${{ env.PILOT_BRANCH_NAME }} branch"
           echo "Path: ${{ env.PATH }}"
 
   else-condition:
@@ -27,5 +28,6 @@ jobs:
       - name: Run task for non-main branch
         run: |
           echo "Running task for ${{ github.ref }} branch"
+          echo "Input branch ${{ env.PILOT_BRANCH_NAME }} branch"
           echo "Path: ${{ env.PATH }}"
       
