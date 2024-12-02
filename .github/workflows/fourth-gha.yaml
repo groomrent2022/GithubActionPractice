@@ -4,10 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       release_version:
-        description: 'Release VersionNo'
+        description: 'Release Version No'
         required: true
 
 env:
+  PATH: release/*
   PILOT_BRANCH_NAME: "release/${{ inputs.release_version }}-common-pilot"
   
 jobs:
@@ -18,6 +19,7 @@ jobs:
       - name: Run task for main branch
         run: |
           echo "Running task for the main branch"
+          echo "Path: ${{ env.PATH }}"
 
   else-condition:
     runs-on: ubuntu-latest
@@ -25,4 +27,5 @@ jobs:
       - name: Run task for non-main branch
         run: |
           echo "Running task for ${{ github.ref }} branch"
+          echo "Path: ${{ env.PATH }}"
       
