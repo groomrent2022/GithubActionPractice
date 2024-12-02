@@ -6,15 +6,13 @@ on:
       release_version:
         description: 'Release Version No'
         required: true
-
-env:
-  PATH: release/*
-  PILOT_BRANCH_NAME: "release/${{ inputs.release_version }}-common-pilot"
   
 jobs:
   if-condition:
-    if: contains(github.ref, '${{ env.PILOT_BRANCH_NAME }}')
     runs-on: ubuntu-latest
+    env:
+      PILOT_BRANCH_NAME: "release/${{ inputs.release_version }}-common-pilot"
+    if: contains(github.ref, '${{ env.PILOT_BRANCH_NAME }}')
     steps:
       - name: Run task for main branch
         run: |
