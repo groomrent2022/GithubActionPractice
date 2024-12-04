@@ -13,7 +13,7 @@ env:
 jobs:
   if-condition:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == "refs/heads/${{ env.PILOT_BRANCH_NAME }}" }}  # If condition
+    if: ${{ github.ref == env.PILOT_BRANCH_NAME }}  # If condition
     steps:
       - name: Run task for main branch
         run: |
@@ -25,4 +25,8 @@ jobs:
       - name: Run task for non-main branch
         run: |
           echo "Running task for ${{ github.ref }} branch"
+          echo "Running task for ${{ env.PILOT_BRANCH_NAME }} branch"
+          echo "Running task for $env.PILOT_BRANCH_NAME branch"
+          echo "Running task for $GITHUB_REF branch"
+          echo "Running task for $GITHUB_HEAD_REF branch"
       
