@@ -11,6 +11,13 @@ env:
   PILOT_BRANCH_NAME: "release/${{ inputs.release_version }}-common-pilot"
   
 jobs:
+  if-condition:
+    runs-on: ubuntu-latest
+    if: contains($github.ref == $env.PILOT_BRANCH_NAME }}  # If condition
+    steps:
+      - name: Run task for main branch
+        run: |
+          echo "Running task for the main branch"
 
   else-condition:
     runs-on: ubuntu-latest
