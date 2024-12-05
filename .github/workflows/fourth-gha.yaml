@@ -30,4 +30,3 @@ jobs:
           echo "Running task for $env.PILOT_BRANCH_NAME branch"
           echo "Running task for $GITHUB_REF branch"
           echo "Running task for $GITHUB_HEAD_REF branch"
-      
