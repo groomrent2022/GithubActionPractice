@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PILOT_BRANCH_NAME: "release/${{ inputs.release_version }}-common-pilot"
-    if: ${{ "$GITHUB_REF" == "refs/heads/$PILOT_BRANCH_NAME" }}
+    if: ${{ $GITHUB_REF == "refs/heads/release/${{ inputs.release_version }}-common-pilot" }}
     steps:
       - name: Run task for main branch
         run: |
