@@ -12,13 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PILOT_BRANCH_NAME: "release/${{ inputs.release_version }}-common-pilot"
-    if: contains('$GITHUB_REF', '$env.PILOT_BRANCH_NAME')
     steps:
       - name: Run task for main branch
         run: |
           echo "Running task for the main branch"
           echo $GITHUB_REF
-          echo '${{ env.PILOT_BRANCH_NAME }}'
+          echo ${{ env.PILOT_BRANCH_NAME }}
+          echo $PILOT_BRANCH_NAME
 
   else-condition:
     runs-on: ubuntu-latest
@@ -26,7 +26,6 @@ jobs:
       - name: Run task for non-main branch
         run: |
           echo "Running task for ${{ github.ref }} branch"
-          echo "Running task for ${{ env.PILOT_BRANCH_NAME }} branch"
-          echo "Running task for $env.PILOT_BRANCH_NAME branch"
           echo "Running task for $GITHUB_REF branch"
-          echo "Running task for $GITHUB_HEAD_REF branch"
+          echo "Running task for $env.PILOT_BRANCH_NAME branch"
+          echo "Running task for $PILOT_BRANCH_NAME branch"
