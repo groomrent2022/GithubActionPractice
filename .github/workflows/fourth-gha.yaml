@@ -1,4 +1,4 @@
-name: Fourth Workflow
+name: Fourth Main Workflow
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ on:
 jobs:
   if-condition:
     runs-on: ubuntu-latest
-    if: contains(github.ref, ${{ inputs.release_version }})
+    if: ${{ contains(github.ref, inputs.release_version) }}
     steps:
       - name: Run task for main branch
         run: |
