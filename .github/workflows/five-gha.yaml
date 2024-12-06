@@ -12,7 +12,7 @@ env:
 jobs:
   if-condition:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == env.PILOT_BRANCH_NAME }}
+    if: ${{ github.ref == $PILOT_BRANCH_NAME }}
     steps:
       - name: Run task for main branch
         run: |
