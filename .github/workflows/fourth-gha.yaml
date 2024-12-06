@@ -10,14 +10,14 @@ on:
 jobs:
   if-condition:
     runs-on: ubuntu-latest
-    if: contains(github.ref, ${{ 'refs/heads/release/' }}${{ inputs.release_version }}${{ '-common-pilot' }})
+    if: contains(github.ref, ${{ inputs.release_version }})
     steps:
       - name: Run task for main branch
         run: |
           echo "Running task for the main branch"
           echo $GITHUB_REF
-          echo ${{ env.PILOT_BRANCH_NAME }}
-          echo $PILOT_BRANCH_NAME
+          echo ${{ inputs.release_version }}
+          echo contains(github.ref, ${{ inputs.release_version }})
 
   else-condition:
     runs-on: ubuntu-latest
