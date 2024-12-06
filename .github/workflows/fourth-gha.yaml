@@ -10,7 +10,7 @@ on:
 jobs:
   if-condition:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/release/${{ inputs.release_version }}-common-pilot' }}
+    if: ${{ github.ref == 'refs/heads/release/' + inputs.release_version + '-common-pilot' }}
     steps:
       - name: Run task for main branch
         run: |
