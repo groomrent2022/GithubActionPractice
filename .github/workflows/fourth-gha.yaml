@@ -16,8 +16,8 @@ jobs:
         run: |
           echo "Running task for the main branch"
           echo $GITHUB_REF
-          echo ${{ env.PILOT_BRANCH_NAME }}
-          echo $PILOT_BRANCH_NAME
+          echo ${{ inputs.release_version }}
+          echo contains(github.ref, ${{ inputs.release_version }})
 
   else-condition:
     runs-on: ubuntu-latest
