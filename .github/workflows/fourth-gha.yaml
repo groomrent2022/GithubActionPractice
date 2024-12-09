@@ -22,16 +22,19 @@ jobs:
       - name: Run if condition is true
         run: |
           echo "Condition is true!"
-          if: contains(github.ref, ${{ inputs.release_version }})  # If condition is true
+          if: [ github.ref == ${{ inputs.release_version }} ]; then
             echo "Wowwww....."
+            exit 1
+          fi
           else
             echo "Chhhiii........"   
 
       - name: Run else condition
-        if: ${{ !contains(github.ref, 'main') }}  # Else condition
         run: |
           echo "Condition is false!"
-          if: contains(github.ref, ${{ env.PILOT_BRANCH_NAME }})  # If condition is true
+          if: [ github.ref == ${{ env.PILOT_BRANCH_NAME }} ]; then
             echo "Wowwww....."
+            exit 1
+          fi
           else
             echo "Chhhiii........" 
