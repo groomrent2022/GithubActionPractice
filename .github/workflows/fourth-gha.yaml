@@ -18,7 +18,7 @@ jobs:
           echo "Condition is true!"
           echo "$env.PILOT_BRANCH_NAME"
           echo "${{ env.PILOT_BRANCH_NAME }}"
-        if: ${{ contains(github.ref, PILOT_BRANCH_NAME) }}  # If condition is true
+        if: ${{ contains(github.ref, $PILOT_BRANCH_NAME) }}  # If condition is true
 
       - name: Run else condition
         run: |
