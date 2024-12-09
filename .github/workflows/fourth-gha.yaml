@@ -1,4 +1,4 @@
-name: Fourth Main Workflow
+name: Fourth Workflow Test
 
 on:
   workflow_dispatch:
@@ -6,22 +6,21 @@ on:
       release_version:
         description: 'Release VersionNo'
         required: true
-  
-jobs:
-  if-condition:
-    runs-on: ubuntu-latest
-    if: ${{ contains(github.ref, inputs.release_version) }}
-    steps:
-      - name: Run task for main branch
-        run: |
-          echo "Running task for the main branch"
-          echo $GITHUB_REF
-          echo ${{ inputs.release_version }}
-          echo contains(github.ref, ${{ inputs.release_version }})
+env:
+  PILOT_BRANCH_NAME: ${{ 'refs/heads/' }}${{ inputs.release_version }}
 
-  else-condition:
+jobs:
+  example-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Run task for non-main branch
+      - name: Run if condition is true
         run: |
-          echo "Running task for $PILOT_BRANCH_NAME branch"
+          echo "Condition is true!"
+          echo "$env.PILOT_BRANCH_NAME"
+          echo "${{ env.PILOT_BRANCH_NAME }}"
+        if: ${{ contains(github.ref, PILOT_BRANCH_NAME) }}  # If condition is true
+
+      - name: Run else condition
+        run: |
+          echo "Condition is false!"
+        if: ${{ !contains(github.ref, 'main') }}  # Else condition
