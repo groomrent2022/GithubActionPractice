@@ -23,8 +23,9 @@ jobs:
         run: |
           selected_branch_name="${{ github.ref }}"
           input_branch_name="${{ inputs.release_version }}"
-          echo selected_branch_name
-          echo input_branch_name
+          echo "$selected_branch_name"
+          echo "$input_branch_name"
+          echo "${{ input_branch_name }}"
           if [[ $branch_name =~ $input_branch_name ]]; then
             echo "Running on main branch!"
           else
