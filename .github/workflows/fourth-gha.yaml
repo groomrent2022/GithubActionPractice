@@ -7,7 +7,7 @@ on:
         description: 'Release VersionNo'
         required: true
 env:
-  PILOT_BRANCH_NAME: '${{ inputs.release_version }}'
+  PILOT_BRANCH_NAME: "refs/heads/${{ inputs.release_version }}"
 
 jobs:
   example-job:
@@ -26,7 +26,7 @@ jobs:
           echo "$selected_branch_name"
           echo "$input_branch_name"
           echo "${{ input_branch_name }}"
-          if [[ $branch_name =~ $input_branch_name ]]; then
+          if [[ $selected_branch_name =~ $PILOT_BRANCH_NAME ]]; then
             echo "Running on main branch!"
           else
             echo "Running on other branch!"
