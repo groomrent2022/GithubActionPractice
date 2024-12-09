@@ -27,4 +27,9 @@ jobs:
             echo "Running on main branch!"
           else
             echo "Running on other branch!"
+            exit 1
           fi
+      
+      - name: Final
+        run: |
+          echo "Final block executing now......................."
