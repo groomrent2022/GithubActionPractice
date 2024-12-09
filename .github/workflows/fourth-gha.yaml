@@ -22,9 +22,8 @@ jobs:
       - name: Run if condition is true
         run: |
           selected_branch_name="${{ github.ref }}"
-          echo "$env.PILOT_BRANCH_NAME"
           echo "$PILOT_BRANCH_NAME"
-          if [[ $selected_branch_name =~ $PILOT_BRANCH_NAME ]]; then
+          if [ $selected_branch_name =~ $PILOT_BRANCH_NAME && contains($selected_branch_name, 'main') ]; then
             echo "Running on main branch!"
           else
             echo "Running on other branch!"
