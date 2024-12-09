@@ -21,16 +21,10 @@ jobs:
         
       - name: Run if condition is true
         run: |
-          echo "Condition is true!"
-          if: [ github.ref == '${{ inputs.release_version }}' ]; then
-            echo "Wowwww....."
-            exit 1
-          fi
-
-      - name: Run else condition
-        run: |
-          echo "Condition is false!"
-          if: [ github.ref == '${{ env.PILOT_BRANCH_NAME }}' ]; then
-            echo "Wowwww....."
-            exit 1
+          selected_branch_name="${{ github.ref }}"
+          input_branch_name="${{ inputs.release_version }}"
+          if [[ $branch_name =~ $input_branch_name ]]; then
+            echo "Running on main branch!"
+          else
+            echo "Running on other branch!"
           fi
