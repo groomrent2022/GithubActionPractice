@@ -25,7 +25,7 @@ jobs:
         run: |
           echo "Condition is true!"
           echo "Wowwww....."
-        if: ${{ contains(github.ref, $inputs.release_version) }}  # If condition is true
+        if: ${{ contains(github.ref, 'mai') }}  # If condition is true
 
       - name: Run else condition
         run: |
