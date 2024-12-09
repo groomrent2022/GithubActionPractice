@@ -23,7 +23,7 @@ jobs:
         run: |
           selected_branch_name="${{ github.ref }}"
           echo "$PILOT_BRANCH_NAME"
-          if [[ $selected_branch_name == "$PILOT_BRANCH_NAME" && $selected_branch_name == *main* ]]; then
+          if [[ $selected_branch_name == "$PILOT_BRANCH_NAME" && "$PILOT_BRANCH_NAME" == *main* ]]; then
             echo "Running on main branch!"
           else
             echo "Running on other branch!"
