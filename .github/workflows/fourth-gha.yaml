@@ -7,18 +7,25 @@ on:
         description: 'Release VersionNo'
         required: true
 env:
-  PILOT_BRANCH_NAME: ${{ 'refs/heads/' }}${{ inputs.release_version }}
+  PILOT_BRANCH_NAME: 'refs/heads/${{ inputs.release_version }}'
 
 jobs:
   example-job:
     runs-on: ubuntu-latest
     steps:
+      - name: Print Details
+        run: |
+          echo "Condition is true!"
+          echo $inputs.release_version
+          echo "${{ inputs.release_version }}"
+          echo "$env.PILOT_BRANCH_NAME"
+          echo "${{ env.PILOT_BRANCH_NAME }}"
+        
       - name: Run if condition is true
         run: |
           echo "Condition is true!"
-          echo "$env.PILOT_BRANCH_NAME"
-          echo "${{ env.PILOT_BRANCH_NAME }}"
-        if: ${{ contains(github.ref, $PILOT_BRANCH_NAME) }}  # If condition is true
+          echo "Wowwww....."
+        if: ${{ contains(github.ref, $inputs.release_version) }}  # If condition is true
 
       - name: Run else condition
         run: |
