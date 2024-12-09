@@ -22,19 +22,15 @@ jobs:
       - name: Run if condition is true
         run: |
           echo "Condition is true!"
-          if: [ github.ref == ${{ inputs.release_version }} ]; then
+          if: [ github.ref == '${{ inputs.release_version }}' ]; then
             echo "Wowwww....."
             exit 1
           fi
-          else
-            echo "Chhhiii........"   
 
       - name: Run else condition
         run: |
           echo "Condition is false!"
-          if: [ github.ref == ${{ env.PILOT_BRANCH_NAME }} ]; then
+          if: [ github.ref == '${{ env.PILOT_BRANCH_NAME }}' ]; then
             echo "Wowwww....."
             exit 1
           fi
-          else
-            echo "Chhhiii........" 
