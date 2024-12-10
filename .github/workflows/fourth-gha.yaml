@@ -29,7 +29,10 @@ jobs:
             echo "Running on other branch!"
             exit 1
           fi
-      
+          
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
       - name: Running another gha script
         uses: ./..github/workflows/first-gha.yml
         with:
