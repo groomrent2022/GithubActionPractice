@@ -30,6 +30,11 @@ jobs:
             exit 1
           fi
       
+      - name: Running another gha script
+        uses: ./..github/workflows/first-gha.yml
+        with:
+          APK_ARTIFACT_PATH: config/*
+      
       - name: Final
         run: |
-          echo "Final block executing now......................."
+          echo "Job completed here"
