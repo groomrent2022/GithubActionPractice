@@ -30,11 +30,7 @@ jobs:
             echo "Running on other branch!"
             exit 1
           fi 
-    
-  Run-Another-Task:
-    runs-on: ubuntu-latest
-    needs: [ Validate-Branch-Name ]
-    steps:
+        
       - name: Checkout code
         uses: actions/checkout@v2
         
