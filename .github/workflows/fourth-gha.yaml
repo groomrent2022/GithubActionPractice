@@ -10,7 +10,7 @@ env:
   PILOT_BRANCH_NAME: "refs/heads/${{ inputs.release_version }}"
 
 jobs:
-  example-job:
+  Validate-Branch-Name:
     runs-on: ubuntu-latest
     steps:
       - name: Print Details
@@ -25,14 +25,15 @@ jobs:
           echo "$PILOT_BRANCH_NAME"
           if [[ $selected_branch_name == "$PILOT_BRANCH_NAME" && $selected_branch_name == *main* ]]; then
             echo "Running on main branch!"
+            echo "Running next task now"
           else
             echo "Running on other branch!"
             exit 1
-          fi
-          
-      - name: Checkout repository
-        uses: actions/checkout@v2
-        
+          fi 
+    
+  Run-Another-Task:
+    runs-on: ubuntu-latest
+    steps:
       - name: Running another gha script
         uses: ./.github/workflows/first-gha.yml
         with:
