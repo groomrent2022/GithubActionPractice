@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Running another gha script
-        uses: ./..github/workflows/first-gha.yml
+        uses: ./.github/workflows/first-gha.yml
         with:
           APK_ARTIFACT_PATH: config/*
       
