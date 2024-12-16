@@ -11,6 +11,12 @@ jobs:
       - name: Run task for main branch
         run: |
           echo "Running task for the main branch"
+          original_string="Hello, GitHub Actions!"
+          echo "Original String: $original_string"
+          
+          # Replace 'GitHub' with 'World'
+          new_string="${original_string//GitHub/World}"
+          echo "Updated String: $new_string"
 
   else-condition:
     runs-on: ubuntu-latest
