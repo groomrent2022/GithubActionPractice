@@ -3,6 +3,9 @@ name: First Workflow
 on:
   workflow_dispatch:
 
+env:
+  NAME: "Hello, GitHub Actions!"
+  
 jobs:
   if-condition:
     runs-on: ubuntu-latest
@@ -11,11 +14,10 @@ jobs:
       - name: Run task for main branch
         run: |
           echo "Running task for the main branch"
-          original_string="Hello, GitHub Actions!"
-          echo "Original String: $original_string"
+          echo "Original String: $NAME"
           
           # Replace 'GitHub' with 'World'
-          new_string="${original_string//GitHub/World}"
+          new_string="${NAME//GitHub/World}"
           echo "Updated String: $new_string"
 
   else-condition:
