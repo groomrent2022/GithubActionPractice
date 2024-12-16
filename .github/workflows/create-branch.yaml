@@ -14,6 +14,11 @@ jobs:
   Create-Branch:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Git
+        run: |
+          git config user.name "GRent"
+          git config user.email "groomrent@github.com"
+          
       - name: Checkout repository
         uses: actions/checkout@v3
         
