@@ -19,7 +19,7 @@ jobs:
           # Replace 'GitHub' with 'World'
           new_string="${NAME//98/}"
           echo "Updated String: $new_string"
-          if [ "$NAME" != *$new_string* ]; then
+          if [ "$NAME" != *"$new_string"* ]; then
             echo "Success: $NAME, $new_string"
           echo "Failed: $NAME, $new_string"
           fi
