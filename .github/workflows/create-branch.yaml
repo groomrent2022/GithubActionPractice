@@ -1,0 +1,24 @@
+name: Creat A Branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Enter Branch Name'
+        required: true
+
+env:
+  BRANCH_NAME: "${{ inputs.branch_name }}"
+  
+jobs:
+  Create-Branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run task for main branch
+        shell: bash
+        run: |
+          echo "Creating new branch - $BRANCH_NAME"
+          git checkout -b "$BRANCH_NAME"
+          git commit -m "Creating new branch - $BRANCH_NAME"
+          git push --set-upstream origin "$BRANCH_NAME" -q
+          echo "New branch - $BRANCH_NAME has been created successfully"
