@@ -21,8 +21,7 @@ jobs:
           echo "Updated String: $new_string"
           if [ "${NAME" != *$new_string* ]; then
             echo "Success: $NAME, $new_string"
-          else
-            echo "Failed: $NAME, $new_string"
+          echo "Failed: $NAME, $new_string"
           fi
           
   else-condition:
