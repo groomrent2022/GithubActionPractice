@@ -23,7 +23,8 @@ jobs:
             echo "Success: $NAME, $new_string"
           else
             echo "Failed: $NAME, $new_string"
-
+          fi
+          
   else-condition:
     runs-on: ubuntu-latest
     if: ${{ github.ref != 'refs/heads/main' }}  # Else condition
