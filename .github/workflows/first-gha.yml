@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  NAME: "Hello, GitHub Actions!"
+  NAME: "4.77.98"
   
 jobs:
   if-condition:
@@ -17,7 +17,7 @@ jobs:
           echo "Original String: $NAME"
           
           # Replace 'GitHub' with 'World'
-          new_string="${NAME//GitHub/World}"
+          new_string="${NAME//98/0}"
           echo "Updated String: $new_string"
 
   else-condition:
