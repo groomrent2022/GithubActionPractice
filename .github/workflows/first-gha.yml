@@ -14,8 +14,15 @@ jobs:
       - name: Extract String
         run: |
            INPUT="4.77.1"
+           OUTPUT="4.77.0"
            RESULT=$(echo "$INPUT" | cut -d '.' -f 1-2)
+           RESULT1=$(echo "$OUTPUT" | cut -d '.' -f 1-2)
+           if [ "$RESULT" != "$RESULT1" ]; then
+             echo "$RESULT and $RESULT1 are not equal"
+           fi
+           echo "$RESULT and $RESULT1 are equal..................."
            echo "Extracted Result: $RESULT"
+           echo "Extracted Result: $RESULT1"
         
       - name: Run task for main branch
         run: |
